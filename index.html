@@ -81,6 +81,7 @@
 <div class="hero">
     <h2>專業維修、引擎動力升級、精品改裝</h2>
     <p>深耕新莊，為您的愛車提供最嚴謹的保養流程</p>
+    <a href="https://line.me/R/ti/p/@你的ID" class="btn-line" target="_blank">立即 LINE 預約保養</a>
 </div>
 
 <div class="container">
@@ -113,6 +114,53 @@
 <footer>
     <p>地址：新北市新莊區（歡迎預約）</p>
     <p>&copy; 2026 旭馳車業 版權所有</p>
+    /* LINE 預約按鈕樣式 */
+        .btn-line {
+            display: inline-block;
+            background-color: #06C755; /* LINE 官方綠色 */
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-line:hover {
+            background-color: #05a346;
+            transform: scale(1.05);
+        }
+
+        /* 右下角懸浮按鈕 */
+        .floating-line {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #06C755;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-size: 14px;
+            text-align: center;
+            line-height: 1.2;
+            font-weight: bold;
+        }
+
+        .floating-line:hover {
+            transform: translateY(-5px);
+        }
+</footer>
+<footer>
+    <p>地址：新北市新莊區（歡迎預約）</p>
+    <p>LINE 客服：@你的ID</p> <p>&copy; 2026 旭馳車業 版權所有</p>
 </footer>
 
 </body>
