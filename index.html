@@ -4,142 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>旭馳車業 Xuchi Motor - 專業機車維修與動力升級</title>
-    <style>
-        /* --- 基礎設定 --- */
-        body {
-            font-family: "Microsoft JhengHei", "PingFang TC", Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        /* --- 導覽列 --- */
-        header {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            padding: 1.5rem;
-            text-align: center;
-            border-bottom: 4px solid #d32f2f;
-        }
-
-        /* --- 主視覺區 (Hero) --- */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), #d32f2f;
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        /* --- 按鈕樣式 --- */
-        .btn-line {
-            display: inline-block;
-            background-color: #06C755; /* LINE 綠 */
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 20px;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);
-        }
-
-        .btn-line:hover {
-            background-color: #05a346;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(6, 199, 85, 0.4);
-        }
-
-        /* --- 內容容器 --- */
-        .container {
-            max-width: 900px;
-            margin: -30px auto 40px;
-            padding: 30px;
-            background: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-radius: 12px;
-        }
-
-        .shop-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            display: block;
-            margin: 20px auto;
-            border: 1px solid #ddd;
-        }
-
-        /* --- 服務項目列表 --- */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .service-item {
-            background: #fdfdfd;
-            padding: 20px;
-            border-left: 5px solid #d32f2f;
-            border-radius: 4px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .service-item h4 {
-            margin-top: 0;
-            color: #d32f2f;
-        }
-
-        /* --- 右下角懸浮按鈕 --- */
-        .floating-line {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #06C755;
-            color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 1000;
-            font-size: 15px;
-            text-align: center;
-            line-height: 1.2;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .floating-line:hover {
-            transform: scale(1.1);
-        }
-
-        /* --- 頁尾 --- */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            background: #1a1a1a;
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        footer strong {
-            color: #fff;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<div class="cursor-follower"></div>
 
 <header>
     <h1>旭馳車業 Xuchi Moto</h1>
@@ -148,43 +18,38 @@
 <div class="hero">
     <h2>專業維修、動力升級、精品改裝</h2>
     <p>提供最嚴謹的 SOP 保養流程，照顧您的每一台愛車</p>
-    <a href="https://line.me/R/ti/p/@你的ID" class="btn-line" target="_blank">點我加入 LINE 預約</a>
+    <a href="https://line.me/R/ti/p/@f22048272" class="btn-line" target="_blank">點我加入 LINE 好友</a>
 </div>
 
 <div class="container">
     <section>
         <h3>關於旭馳</h3>
-        <p>我們位於新莊區，專精於各項機車維修與動力調教。無論是日常保養還是深度改裝，旭馳車業都致力於提供最透明、最專業的服務體驗。</p>
-        
-        <img src="1212.jpeg" alt="旭馳車業店面照片" class="shop-img">
+        <p>我們位於新莊區，專精於各項機車維修與動力調教。</p>
+        <img src="img/1212.jpeg" alt="旭馳車業店面照片" class="shop-img">
     </section>
 
     <section>
         <h3>核心服務項目</h3>
         <div class="services">
-            <div class="service-item">
-                <h4>機車定期保養</h4>
-                <p>標準化檢查與正廠耗材更換。</p>
-            </div>
-            <div class="service-item">
-                <h4>引擎動力升級</h4>
-                <p>專業 59 缸、63 缸升級與優化。</p>
-            </div>
-            <div class="service-item">
-                <h4>電腦動力調教</h4>
-                <p>專業 Dyno 機台精準數據化調整。</p>
-            </div>
-            <div class="service-item">
-                <h4>底盤懸吊改裝</h4>
-                <p>制動系統與避震器升級設定。</p>
-            </div>
+            <div class="service-item"><h4>機車定期保養</h4><p>標準化檢查與正廠耗材更換。</p></div>
+            <div class="service-item"><h4>引擎動力升級</h4><p>專業 59 缸、63 缸升級與優化。</p></div>
+            <div class="service-item"><h4>電腦動力調教</h4><p>專業 Dyno 機台精準數據化調整。</p></div>
+            <div class="service-item"><h4>底盤懸吊改裝</h4><p>制動系統與避震器升級設定。</p></div>
         </div>
+    </section>
+
+    <section class="special-display">
+         <h3>精品零件展示</h3>
+         <p>（試著移動滑鼠，看看零件的動態效果）</p>
+         <div class="moving-box">
+            <img src="img/logo.png" alt="動態零件" class="my-moving-png">
+         </div>
     </section>
 </div>
 
-<a href="https://line.me/R/ti/p/@f22048272" class="floating-line" target="_blank">
-    LINE<br>預約
-</a>
+<a href="https://line.me/R/ti/p/@f22048272" class="floating-line" target="_blank">LINE<br>預約</a>
+
+<div class="myname">技術指導：旭馳車業 Jay</div>
 
 <footer>
     <p><strong>旭馳車業 Xuchi Motor</strong></p>
@@ -192,6 +57,8 @@
     <p>LINE ID：@f22048272</p>
     <p>&copy; 2026 Xuchi Motor. 版權所有.</p>
 </footer>
+
+<script src="js/script.js"></script>
 
 </body>
 </html>
