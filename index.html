@@ -1,11 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
-    <title>我的第一個網頁</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旭馳車業 Xuchi Motor - 專業機車維修與動力升級</title>
+    <style>
+        /* 基礎樣式設定 */
+        body {
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* 導覽列 */
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* 主視覺區塊 */
+        .hero {
+            background-color: #d32f2f; /* 賽車紅 */
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* 內容容器 */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        /* 圖片樣式 */
+        .shop-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        /* 服務項目列表 */
+        .services {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .service-item {
+            background: #eee;
+            padding: 15px;
+            border-left: 5px solid #d32f2f;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <h1>哈囉！歡迎來到我的祕密基地</h1>
-    <p>這是我用 VS Code 蓋出來的第一個網站！</p>
-    <img src="1212.jpeg" alt="旭馳車業店面照片" width="500">
+
+<header>
+    <h1>旭馳車業 Xuchi Motor</h1>
+</header>
+
+<div class="hero">
+    <h2>專業維修、引擎動力升級、精品改裝</h2>
+    <p>深耕新莊，為您的愛車提供最嚴謹的保養流程</p>
+</div>
+
+<div class="container">
+    <h3>關於我們</h3>
+    <p>旭馳車業致力於提供高品質的機車維護服務。不論是日常基礎保養，還是深度的引擎動力調校，我們都秉持專業 SOP，確保每一輛車離開店面時都處於最佳狀態。</p>
+    
+    <img src="1212.jpeg" alt="旭馳車業店面照片" class="shop-img">
+
+    <h3>核心服務</h3>
+    <div class="services">
+        <div class="service-item">
+            <h4>定期保養</h4>
+            <p>標準化換油與全車安全檢查。</p>
+        </div>
+        <div class="service-item">
+            <h4>動力升級</h4>
+            <p>59 缸、63 缸等引擎優化工程。</p>
+        </div>
+        <div class="service-item">
+            <h4>電腦調教</h4>
+            <p>專業 Dyno 機台精準動力輸出。</p>
+        </div>
+        <div class="service-item">
+            <h4>精品改裝</h4>
+            <p>懸吊、制動與各式視覺化改裝。</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>地址：新北市新莊區（歡迎預約）</p>
+    <p>&copy; 2026 旭馳車業 版權所有</p>
+</footer>
+
 </body>
 </html>
