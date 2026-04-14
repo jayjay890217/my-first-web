@@ -3,50 +3,59 @@ document.addEventListener('DOMContentLoaded', () => {
     const movingImgs = document.querySelectorAll('.my-moving-png');
     const moveStrength = 40;
 
-    // --- 1. 原有的滑鼠跟隨邏輯 ---
-    window.addEventListener('mousemove', (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-        const width = window.innerWidth;
-        const height = window.innerHeight;
+    // 1. 偵測是否為「觸控裝置」(手機或平板)
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-        if (follower) {
-            follower.style.left = x + 'px';
-            follower.style.top = y + 'px';
-        }
+    // 2. 滑鼠跟隨邏輯 (只在「非」觸控螢幕上執行)
+    if (!isTouchDevice) {
+        window.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            const width = window.innerWidth;
+            const height = window.innerHeight;
 
-        movingImgs.forEach((img) => {
-            const mouseX = (x / width) - 0.5;
-            const mouseY = (y / height) - 0.5;
-            img.style.transform = `translate(${mouseX * moveStrength}px, ${mouseY * moveStrength}px)`;
+            // 電腦版：顯示並移動紅點
+            if (follower) {
+                follower.style.display = 'block'; 
+                follower.style.left = x + 'px';
+                follower.style.top = y + 'px';
+            }
+
+            movingImgs.forEach((img) => {
+                const mouseX = (x / width) - 0.5;
+                const mouseY = (y / height) - 0.5;
+                img.style.transform = `translate(${mouseX * moveStrength}px, ${mouseY * moveStrength}px)`;
+            });
         });
-    });
+    } else {
+        // 手機版：直接隱藏紅點，避免卡在畫面上
+        if (follower) {
+            follower.style.display = 'none';
+        }
+    }
 
-    // --- 2. 新增：陀螺儀處理邏輯 ---
+    // 3. 陀螺儀處理邏輯
     function handleOrientation(event) {
-        // gamma: 左右傾斜 (-90 到 90) -> 對應 X 軸
-        // beta: 前後傾斜 (-180 到 180) -> 對應 Y 軸
         let x = event.gamma; 
         let y = event.beta;
 
-        // 數值優化：讓移動感更自然
-        // 限制 gamma 在 -30 到 30 之間，並除以 30 得到 -1 到 1 的比例
+        // 如果抓不到數據就跳出，避免報錯
+        if (x === null || y === null) return;
+
         const xRatio = Math.max(-1, Math.min(1, x / 30));
-        // 假設使用者拿手機角度是 45 度，所以減去 45
         const yRatio = Math.max(-1, Math.min(1, (y - 45) / 30));
 
         movingImgs.forEach((img) => {
-            const xMove = xRatio * (moveStrength / 2); // 陀螺儀力道稍微減半比較平穩
+            const xMove = xRatio * (moveStrength / 2);
             const yMove = yRatio * (moveStrength / 2);
             img.style.transform = `translate(${xMove}px, ${yMove}px)`;
         });
     }
 
-    // --- 3. 新增：iOS 授權與啟動監聽 ---
-    // 為了相容 iOS，建議在頁面某處加入一個按鈕或點擊事件來觸發此函數
+    // 4. 啟動陀螺儀的函數
     function initGyro() {
         if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-            // iOS 裝置
+            // iOS 13+ 需要取得使用者授權
             DeviceOrientationEvent.requestPermission()
                 .then(response => {
                     if (response === 'granted') {
@@ -55,13 +64,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .catch(console.error);
         } else {
-            // 非 iOS (Android 或一般電腦)
+            // Android 不需要授權，直接監聽
             window.addEventListener('deviceorientation', handleOrientation);
         }
     }
 
-    // 這裡示範：點擊網頁任何地方就嘗試啟動陀螺儀 (因為 iOS 必須由使用者觸發)
-    document.body.addEventListener('click', () => {
-        initGyro();
-    }, { once: true }); // 只執行一次
+    // 5. 針對手機的觸發機制
+    if (isTouchDevice) {
+        // Android 通常允許直接啟動，我們先嘗試啟動一次
+        if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission !== 'function') {
+            window.addEventListener('deviceorientation', handleOrientation);
+        }
+
+        // iOS 必須要有「人類互動」才能請求權限。
+        // 我們綁定 'touchstart'，這樣 iOS 用戶只要手指一摸到螢幕(準備滑動網頁時)，就會自動觸發啟動
+        document.body.addEventListener('touchstart', () => {
+            initGyro();
+        }, { once: true }); // { once: true } 代表只觸發一次，不會浪費效能
+    }
 });
